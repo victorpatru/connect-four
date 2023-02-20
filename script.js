@@ -7,6 +7,7 @@ class ConnectFour {
   rows = 6;
   columns = 7;
   currColumns;
+  gameWinner;
 
   setGame = () => {
     this.board = [];
@@ -144,14 +145,98 @@ class ConnectFour {
   setWinner = (r, c) => {
     let winner = document.getElementById("winner");
     this.board[r][c] === this.playerRed
-      ? (winner.innerText = "Red Wins")
-      : (winner.innerText = "Yellow Wins");
+      ? ((winner.innerText = "Red Wins"), (this.gameWinner = "red"))
+      : ((winner.innerText = "Yellow Wins"), (this.gameWinner = "yellow"));
 
     this.gameOver = true;
+    console.log(this.gameWinner);
+  };
+
+  checkWinnerTest = () => {
+    // Checking Horizontally
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.columns - 3; c++) {
+        // COLUMNS - 3 to make sure we don't go out of the bounds of our row
+        if (this.board[r][c] !== " ") {
+          // Ensures there exists a piece on that spot on the board
+
+          if (
+            this.board[r][c] === this.board[r][c + 1] &&
+            this.board[r][c + 1] === this.board[r][c + 2] &&
+            this.board[r][c + 2] === this.board[r][c + 3]
+          ) {
+            this.board[r][c] === this.playerRed
+              ? (this.gameWinner = "red")
+              : (this.gameWinner = "yellow");
+            this.gameOver = true;
+            return;
+          }
+        }
+      }
+    }
+
+    // Checking Vertically
+    for (let c = 0; c < this.columns; c++) {
+      for (let r = 0; r < this.rows - 3; r++) {
+        if (this.board[r][c] !== " ") {
+          if (
+            this.board[r][c] === this.board[r + 1][c] &&
+            this.board[r + 1][c] === this.board[r + 2][c] &&
+            this.board[r + 2][c] === this.board[r + 3][c]
+          ) {
+            this.board[r][c] === this.playerRed
+              ? (this.gameWinner = "red")
+              : (this.gameWinner = "yellow");
+            this.gameOver = true;
+            return;
+          }
+        }
+      }
+    }
+
+    // Checking Anti-Diagonally
+    for (let r = 0; r < this.rows - 3; r++) {
+      for (let c = 0; c < this.columns - 3; c++) {
+        if (this.board[r][c] !== " ") {
+          if (
+            this.board[r][c] === this.board[r + 1][c + 1] &&
+            this.board[r + 1][c + 1] === this.board[r + 2][c + 2] &&
+            this.board[r + 2][c + 2] === this.board[r + 3][c + 3]
+          ) {
+            this.board[r][c] === this.playerRed
+              ? (this.gameWinner = "red")
+              : (this.gameWinner = "yellow");
+            this.gameOver = true;
+            return;
+          }
+        }
+      }
+    }
+
+    // Checking Diagonally
+    for (let r = 3; r < this.rows; r++) {
+      for (let c = 0; c < this.columns - 3; c++) {
+        if (this.board[r][c] !== " ") {
+          if (
+            this.board[r][c] === this.board[r - 1][c + 1] &&
+            this.board[r - 1][c + 1] === this.board[r - 2][c + 2] &&
+            this.board[r - 2][c + 2] === this.board[r - 3][c + 3]
+          ) {
+            this.board[r][c] === this.playerRed
+              ? (this.gameWinner = "red")
+              : (this.gameWinner = "yellow");
+            this.gameOver = true;
+            return;
+          }
+        }
+      }
+    }
   };
 }
 
-window.onload = () => {
-  const newGame = new ConnectFour();
-  newGame.setGame();
+// const newGame = new ConnectFour();
+// newGame.setGame();
+
+module.exports = {
+  ConnectFour,
 };

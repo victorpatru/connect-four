@@ -1,4 +1,4 @@
-export const HORIZONTAL_RED_WIN = [
+const HORIZONTAL_RED_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
@@ -7,7 +7,7 @@ export const HORIZONTAL_RED_WIN = [
   ["R", "R", "R", "R", " ", " ", " "],
 ];
 
-export const HORIZONTAL_YELLOW_WIN = [
+const HORIZONTAL_YELLOW_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
@@ -16,7 +16,7 @@ export const HORIZONTAL_YELLOW_WIN = [
   [" ", " ", " ", "Y", "Y", "Y", "Y"],
 ];
 
-export const VERTICAL_RED_WIN = [
+const VERTICAL_RED_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   ["R", " ", " ", " ", " ", " ", " "],
@@ -25,7 +25,7 @@ export const VERTICAL_RED_WIN = [
   ["R", " ", " ", " ", "Y", "Y", "Y"],
 ];
 
-export const VERTICAL_YELLOW_WIN = [
+const VERTICAL_YELLOW_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", "Y"],
@@ -34,7 +34,7 @@ export const VERTICAL_YELLOW_WIN = [
   [" ", "R", "R", " ", "R", " ", "Y"],
 ];
 
-export const ANTI_DIAGONAL_RED_WIN = [
+const ANTI_DIAGONAL_RED_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", "R", "Y", " ", " ", " ", " "],
@@ -43,7 +43,7 @@ export const ANTI_DIAGONAL_RED_WIN = [
   ["R", "Y", "R", "Y", "R", " ", " "],
 ];
 
-export const ANTI_DIAGONAL_YELLOW_WIN = [
+const ANTI_DIAGONAL_YELLOW_WIN = [
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", " ", " ", " ", " ", " ", " "],
   [" ", "Y", " ", " ", " ", " ", " "],
@@ -51,3 +51,22 @@ export const ANTI_DIAGONAL_YELLOW_WIN = [
   [" ", "Y", "R", "Y", " ", " ", " "],
   [" ", "R", "Y", "R", "Y", "R", "R"],
 ];
+
+const DIAGONAL_RED_WIN = [
+  [" ", " ", " ", " ", " ", " ", " "],
+  [" ", " ", " ", " ", " ", " ", " "],
+  [" ", " ", " ", "R", " ", " ", " "],
+  ["R", "Y", "R", "R", " ", " ", " "],
+  ["Y", "R", "R", "Y", " ", " ", " "],
+  ["R", "Y", "Y", "Y", " ", " ", " "],
+];
+
+module.exports = {
+  HORIZONTAL_RED_WIN,
+  HORIZONTAL_YELLOW_WIN,
+  VERTICAL_RED_WIN,
+  VERTICAL_YELLOW_WIN,
+  ANTI_DIAGONAL_RED_WIN,
+  ANTI_DIAGONAL_YELLOW_WIN,
+  DIAGONAL_RED_WIN,
+};
