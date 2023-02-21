@@ -9,7 +9,7 @@ class ConnectFour {
   currColumns;
   gameWinner;
 
-  setGame = () => {
+  setGame() {
     this.board = [];
 
     this.currColumns = [5, 5, 5, 5, 5, 5, 5];
@@ -22,16 +22,15 @@ class ConnectFour {
         let tile = document.createElement("div");
         tile.id = `${r}-${c}`;
         tile.classList.add("tile");
-        tile.addEventListener("click", this.setPiece);
+        tile.addEventListener("click", (e) => this.setPiece(e));
         document.getElementById("board").append(tile);
       }
       this.board.push(row);
     }
-  };
+  }
 
-  // TODO: Figure out why you needed to transform setPiece function from a function declaration to a function call
   // Something to do with binding "this" keyword to the right item
-  setPiece = (e) => {
+  setPiece(e) {
     // Boolean that we set once we've set the winner
     if (this.gameOver) {
       return;
@@ -42,8 +41,6 @@ class ConnectFour {
     let coordinates = e.target.id.split("-").map((coor) => parseInt(coor));
     // r,c => show us the coordinates on the page eg. 4,3
     let [r, c] = coordinates;
-
-    // FIXME: figure out why you needed to use an arrow key to be able to access this.currColumns and this.board
 
     // 5 (represents that we are at bottom of the board), 4, 3, 2, 1 (represents that we are at the top of the board) => allows us to make sure we're not going beyond the height of the game
     r = this.currColumns[c];
@@ -71,9 +68,9 @@ class ConnectFour {
     this.currColumns[c] = r; // update the array
 
     this.checkWinner();
-  };
+  }
 
-  checkWinner = () => {
+  checkWinner() {
     // Checking Horizontally
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.columns - 3; c++) {
@@ -140,9 +137,9 @@ class ConnectFour {
         }
       }
     }
-  };
+  }
 
-  setWinner = (r, c) => {
+  setWinner(r, c) {
     let winner = document.getElementById("winner");
     this.board[r][c] === this.playerRed
       ? ((winner.innerText = "Red Wins"), (this.gameWinner = "red"))
@@ -150,9 +147,9 @@ class ConnectFour {
 
     this.gameOver = true;
     console.log(this.gameWinner);
-  };
+  }
 
-  checkWinnerTest = () => {
+  checkWinnerTest() {
     // Checking Horizontally
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.columns - 3; c++) {
@@ -231,7 +228,7 @@ class ConnectFour {
         }
       }
     }
-  };
+  }
 }
 
 // const newGame = new ConnectFour();
